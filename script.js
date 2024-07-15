@@ -4,7 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const functionCodeStep = document.getElementById('functionCodeStep');
     const optionalFunctionsStep = document.getElementById('optionalFunctionsStep');
     const downloadLink = document.getElementById('downloadLink');
-    
+    const functionCodeTextarea = document.getElementById('functionCode');
+    const highlightedCode = document.getElementById('highlightedCode');
+
+    function syncTextareaToPre() {
+        highlightedCode.textContent = functionCodeTextarea.value;
+        hljs.highlightBlock(highlightedCode);
+    }
+
     document.getElementById('nextToFunctionName').addEventListener('click', function () {
         const namespace = document.getElementById('namespace').value.trim();
         if (namespace) {
@@ -27,13 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    functionCodeTextarea.addEventListener('input', syncTextareaToPre);
+
     document.getElementById('nextToOptionalFunctions').addEventListener('click', function () {
-        const functionCode = document.getElementById('functionCode').value.trim();
+        const functionCode = functionCodeTextarea.value.trim();
         if (functionCode) {
             localStorage.setItem('functionCode', functionCode);
             functionCodeStep.style.display = 'none';
             optionalFunctionsStep.style.display = 'block';
-            hljs.highlightBlock(document.getElementById('functionCode'));
         } else {
             alert('Please enter function code.');
         }
@@ -95,7 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('functionName').value = localStorage.getItem('functionName');
     }
     if (localStorage.getItem('functionCode')) {
-        document.getElementById('functionCode').value = localStorage.getItem('functionCode');
-        hljs.highlightBlock(document.getElementById('functionCode'));
+        functionCodeTextarea.value = localStorage.getItem('functionCode');
+        syncTextareaToPre();
     }
 });
+
