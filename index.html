@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datapack Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Datapack Generator</h1>
+        <form id="datapackForm">
+            <label for="namespace">Namespace:</label>
+            <input type="text" id="namespace" name="namespace" required>
+            
+            <label for="functionName">Function Name:</label>
+            <input type="text" id="functionName" name="functionName" required>
+            
+            <label for="functionCode">Function Code:</label>
+            <textarea id="functionCode" name="functionCode" rows="10" required></textarea>
+            
+            <button type="submit">Generate Datapack</button>
+        </form>
+        <a id="downloadLink" style="display:none;">Download Datapack</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
