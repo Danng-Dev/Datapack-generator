@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datapack Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Datapack Generator</h1>
+        <div id="namespaceStep" class="step">
+            <label for="namespace">Namespace:</label>
+            <input type="text" id="namespace" name="namespace" required>
+            <button id="nextToFunctionName">Next</button>
+        </div>
+        
+        <div id="functionNameStep" class="step" style="display:none;">
+            <label for="functionName">Function Name:</label>
+            <input type="text" id="functionName" name="functionName" required>
+            <button id="nextToFunctionCode">Next</button>
+        </div>
+        
+        <div id="functionCodeStep" class="step" style="display:none;">
+            <label for="functionCode">Function Code:</label>
+            <textarea id="functionCode" name="functionCode" rows="10" required></textarea>
+            <pre><code id="highlightedCode" class="mcfunction"></code></pre>
+            <button id="nextToOptionalFunctions">Next</button>
+        </div>
+
+        <div id="optionalFunctionsStep" class="step" style="display:none;">
+            <label for="loadFunction">Load Function (Optional):</label>
+            <input type="text" id="loadFunction" name="loadFunction">
+            
+            <label for="tickFunction">Tick Function (Optional):</label>
+            <input type="text" id="tickFunction" name="tickFunction">
+            
+            <button id="generateDatapack">Generate Datapack</button>
+        </div>
+        
+        <a id="downloadLink" style="display:none;">Download Datapack</a>
+    </div>
+</body>
+</html>
